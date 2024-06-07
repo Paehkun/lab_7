@@ -19,7 +19,9 @@ if (isset($_POST['submit']) && ($_SERVER['REQUEST_METHOD'] == 'POST')) {
 
         // Check if user exists and verify password
         if ($userDetails && password_verify($password, $userDetails['password'])) {
-            echo 'Login Successful';
+            // Redirect to display.php after successful login
+            header("Location: display.php");
+            exit(); // Ensure no further code is executed after the redirect
         } else {
             echo 'Invalid username or password, try <a href="login.php">login</a> again';
         }
@@ -27,3 +29,4 @@ if (isset($_POST['submit']) && ($_SERVER['REQUEST_METHOD'] == 'POST')) {
         echo 'Please fill in all required fields.';
     }
 }
+?>
